@@ -1,0 +1,17 @@
+.container {
+width: 300px;
+background-image: url('image/bg1.jpg');
+background-size: cover;
+height: 200px;
+background-color: lightblue;
+display: flex; /* Menggunakan Flexbox untuk perataan */
+justify-content: center; /* Meratakan secara horizontal */
+align-items: center; /* Meratakan secara vertikal */
+}
+
+.text {
+text-align: center;
+color: black;
+font-family: Arial, sans-serif;
+font-size: 16px;
+}

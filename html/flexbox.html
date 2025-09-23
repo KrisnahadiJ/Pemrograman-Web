@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Layouting Flexbox</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-size: cover;
+            background-position: center;
+            animation: slideShow 60s infinite;
+        }
+        
+        @keyframes slideShow {
+            0%   { background-image: url('image/bg1.jpg'); }
+            10%  { background-image: url('image/bg2.png'); }
+            20%  { background-image: url('image/bg3.jpg'); }
+            30%  { background-image: url('image/bg4.jpg'); }
+            40%  { background-image: url('image/bg5.jpg'); }
+            50%  { background-image: url('image/bg6.jpg'); }
+            60%  { background-image: url('image/bg7.jpg'); }
+            70%  { background-image: url('image/bg8.jpg'); }
+            80%  { background-image: url('image/bg9.jpg'); }
+            90%  { background-image: url('image/bg10.jpg'); }
+            100% { background-image: url('image/bg1.jpg'); }
+        }
+        
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: rgba(128, 128, 128, 0.3);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 40px auto;
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        
+        .sidebar-satu, .sidebar-dua {
+            width: 20%;
+            background: rgba(249,249,249,0.85);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar-satu {
+            width: 20%;
+            background: rgba(249,249,249,0.85);
+            padding: 40px 20px 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        .profile-photo-container {
+            width: 150px;
+            height: 150px;
+            background-color: #ddd; /* Warna latar belakang jika gambar belum loading */
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            border: 4px solid #FF914D;
+            overflow: hidden; /* Penting untuk memastikan gambar tidak keluar dari lingkaran */
+        }
+
+        /* CSS BARU UNTUK FOTO PROFIL */
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Untuk memastikan gambar pas dan tidak terdistorsi */
+            border-radius: 50%; /* Membuat gambar di dalam container juga lingkaran */
+        }
+
+        .sidebar-satu h3, .sidebar-dua h3 {
+            margin-top: 20px;
+            color: #FF914D;
+        }
+        
+        .sidebar-satu ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar-satu ul li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sidebar-satu ul li img {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        
+        .sidebar-satu ul li a {
+            text-decoration: none;
+            color: #2F80ED;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .sidebar-satu ul li a:hover {
+            color: #FF914D;
+        }
+        
+        .content {
+            width: 60%;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        
+        .content h1 {
+            margin-top: 0;
+            font-size: 28px;
+            color: #FF914D;
+        }
+        
+        .content p.desc {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            background: #666;
+            color: #fff;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar-satu">
+            <div class="profile-photo-container">
+                <img src="image/pp.jpg" alt="Foto Profil" class="profile-photo">
+            </div>
+            
+            <h3>Ikuti Saya</h3>
+            <ul>
+                <li>
+                    <img src="svg/ig.svg" alt="Instagram">
+                    <a href="https://www.instagram.com/krisnaa_ja/" target="_blank">Instagram</a>
+                </li>
+                <li>
+                    <img src="svg/tt.svg" alt="TikTok">
+                    <a href="https://www.tiktok.com/@krisnaaggg" target="_blank">TikTok</a>
+                </li>
+                <li>
+                    <img src="svg/googleplay.svg" alt="Google Play">
+                    <a href="#">Google Play</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Krisnahadi Jayawardana</h1>
+            <p class="desc">Pendaki gunung dan traveler yang selalu mencari pengalaman baru di setiap langkah perjalanan.</p>
+            <p>
+                Saya adalah seseorang yang percaya bahwa dunia ini terlalu indah untuk hanya dilihat dari layar. 
+                Karena itu, saya memilih untuk menjelajahinya secara langsung, dari hutan tropis yang rimbun, 
+                pantai dengan ombak yang tenang, hingga puncak gunung yang menantang dengan udara dinginnya. 
+                Setiap perjalanan bukan hanya tentang tujuan, tetapi tentang proses, cerita, dan pelajaran yang bisa dibawa pulang.
+            </p>
+            <p>
+                Sebagai seorang pendaki, saya terbiasa menantang diri dengan jalur yang berat, 
+                kabut yang tebal, dan hujan yang turun tiba-tiba. Namun di balik semua itu, 
+                ada rasa syukur yang luar biasa ketika sampai di puncak, melihat lautan awan, 
+                dan merasakan betapa kecilnya kita dibandingkan alam semesta. 
+                Itu adalah momen yang selalu membuat saya jatuh cinta lagi dengan dunia ini.
+            </p>
+            <p>
+                Sebagai seorang traveler, saya tidak hanya fokus pada alam, 
+                tetapi juga budaya, makanan, dan cerita masyarakat lokal yang saya temui. 
+                Bagi saya, perjalanan bukan hanya soal pemandangan indah, 
+                tetapi juga tentang memahami kehidupan orang lain, menghargai perbedaan, 
+                dan membuka wawasan baru tentang dunia.
+            </p>
+            <p>
+                Melalui sosial media, saya mencoba membagikan potongan-potongan perjalanan saya, 
+                bukan hanya foto atau video, tetapi juga cerita dan pengalaman yang mudah-mudahan 
+                bisa menginspirasi orang lain untuk keluar dari zona nyaman mereka, 
+                mencoba hal-hal baru, dan lebih dekat dengan alam. 
+                Karena pada akhirnya, perjalanan adalah tentang menemukan diri kita sendiri.
+            </p>
+        </div>
+
+        <div class="sidebar-dua">
+            <h3>Catatan Singkat</h3>
+            <p>🌍 Traveler sejati</p>
+            <p>⛰️ Pecinta alam & pendaki gunung</p>
+            <p>📸 Hobi fotografi perjalanan</p>
+            <p>✍️ Penulis cerita perjalanan</p>
+            <p>🔥 Motto: "Hidup adalah perjalanan, bukan tujuan."</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Krisnahadi Jayawardana | All Rights Reserved
+    </footer>
+</body>
+</html>
